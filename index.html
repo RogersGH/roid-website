@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+    <title>ROID</title>
+    <meta name="description" content="Roid Client">
+    <meta name="keywords" content="Homepage for Roid Client.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script src="script.js"></script>
+</head>
+<body>
+
+
+    <section class="section__hero">
+        <img src="static/hero__blob1.png" class="blob-1">
+        <img src="static/hero__blob2.png" class="blob-2">
+
+        <div id="hero__container" class="container fill hero__comp">
+
+            <div id="hero__text-container" class="ta-left container-vert">
+                <h1 class="cl-white"><span class="text-purple-grad">Level up</span> your gameplay.</h1>
+                <p class="cl-grey">Roid is a new injectable hybrid client for Minecraft.</p>
+                <div class="mt-20 container jc-left">
+                    <a href="test" class="btn bt-grad cl-black w-500">Get ROID</a>
+                    <a href="test" class="watch-video container btn cl-white">
+                        <img class="icon" src="static/video-icon.png">
+                        Demo video
+                    </a>
+                </div>
+            </div>
+
+            <div id="render-container" class="hero__comp">
+                <canvas id="canvas3d"></canvas>
+            </div>
+        </div> 
+
+        <div id="hero-bg" class="bg-grad"></div>
+    </section>
+
+    <section class="section__cards"></section>
+
+    <header class="header bg-clear">
+        <span class="text-grad logo ml-40">ROID</span>
+
+        <nav id="header__ctas" class="nav bg-clear mr-30 ml-at">
+            <a href="test" class="btn bt-grad cl-black w-500">Get ROID</a>
+            <a href="login">Log in</a>
+            <a href="release-notes">Release notes</a>
+            <a href="login">Features</a>
+        </nav>
+    </header>
+
+</body>
+
+<script type="module">
+    import { Application } from '/static/runtime.js';
+    const canvas = document.getElementById('canvas3d');
+    const app = new Application(canvas);
+    app.load('/static/scene.splinecode');
+</script>
+
+
+</html>
