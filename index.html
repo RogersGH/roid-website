@@ -12,36 +12,37 @@
     <link href="style.css" rel="stylesheet">
     <script src="script.js"></script>
 </head>
-<body>
 
+<body class="lock">
+    <div id="wrapper">
+        <section class="section__hero">
+            <img src="static/hero__blob1.png" class="blob-1">
+            <img src="static/hero__blob2.png" class="blob-2">
 
-    <section class="section__hero">
-        <img src="static/hero__blob1.png" class="blob-1">
-        <img src="static/hero__blob2.png" class="blob-2">
+            <div id="hero__container" class="container fill">
 
-        <div id="hero__container" class="container fill hero__comp">
-
-            <div id="hero__text-container" class="ta-left container-vert">
-                <h1 class="cl-white"><span class="text-purple-grad">Level up</span> your gameplay.</h1>
-                <p class="cl-grey">Roid is a new injectable hybrid client for Minecraft.</p>
-                <div class="mt-20 container jc-left">
-                    <a href="test" class="btn bt-grad cl-black w-500">Get ROID</a>
-                    <a href="test" class="watch-video container btn cl-white">
-                        <img class="icon" src="static/video-icon.png">
-                        Demo video
-                    </a>
+                <div id="hero__text-container" class="ta-left container-vert hero__comp">
+                    <h1 class="cl-white"><span class="text-purple-grad">Level up</span> your gameplay.</h1>
+                    <p class="cl-grey">Roid is a new injectable hybrid client for Minecraft.</p>
+                    <div class="mt-20 container jc-left">
+                        <a href="test" class="btn bt-grad cl-black w-500">Get ROID</a>
+                        <a href="test" class="watch-video container btn cl-white">
+                            <img class="icon" src="static/video-icon.png">
+                            Demo video
+                        </a>
+                    </div>
                 </div>
-            </div>
 
-            <div id="render-container" class="hero__comp">
-                <canvas id="canvas3d"></canvas>
-            </div>
-        </div> 
+                <div id="render-container">
+                    <img id="render-container-placeholder" src="static/spline-pic.png">
+                    <canvas id="canvas3d"></canvas>
+                </div>
+            </div> 
 
-        <div id="hero-bg" class="bg-grad"></div>
-    </section>
-
-    <section class="section__cards"></section>
+            <div id="hero-bg" class="bg-grad"></div>
+        </section>
+        <section class="section__cards"></section>
+    </div>
 
     <header class="header bg-clear">
         <span class="text-grad logo ml-40">ROID</span>
@@ -54,14 +55,70 @@
         </nav>
     </header>
 
+
+    <header id="header__mobile" class="header bg-clear">
+        <span class="text-grad logo ml-40">ROID</span>
+
+        <div id="header__sidebar-container" class="ml-at icon">
+            <input type="checkbox" id="header__mobile-nav-btn" class="bg-clear fill">
+            <script>
+                var checkbox = document.getElementById('header__mobile-nav-btn');
+                checkbox.addEventListener('change', function() {    
+                    if(checkbox.checked) {
+                        document.body.classList.add("lock");
+                    } else {
+                        document.body.classList.remove("lock");
+                    }
+                });
+            </script>
+
+            <label for="header__mobile-nav-btn" id="header__mobile-burger" class="fill">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <div id="header__mobile-tint"></div>
+
+            <nav id="header__mobile-ctas" class="nav bg-clear mr-30 ml-at">
+                <a href="login" class="cl-grey w-300">Features</a>
+                <a href="release-notes" class="cl-grey w-300">Release notes</a>
+                <a href="login" class="cl-grey w-300">Log in</a>
+                <a href="test" class="btn bt-grad cl-black w-500">Get ROID</a>
+            </nav>
+        </div>
+
+    </header>
+
+    <div id="preloader">
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
 </body>
+
 
 <script type="module">
     import { Application } from '/static/runtime.js';
     const canvas = document.getElementById('canvas3d');
     const app = new Application(canvas);
     app.load('/static/scene.splinecode');
+
+    window.addEventListener("load", function() {
+        document.getElementById('render-container-placeholder').style.display = "none";
+        document.getElementById('canvas3d').style.visibility = "visible";
+        document.body.classList.remove("lock");
+        document.getElementById('preloader').style.opacity = 0;
+        setTimeout(function() {
+            document.getElementById('preloader').style.display = "none";
+        }, 750);
+    }, true);
+
+
 </script>
+
+
 
 
 </html>

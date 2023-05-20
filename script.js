@@ -6,7 +6,8 @@ window.addEventListener('scroll', function() {
 });
 
 
-window.onload = (event) => {
+window.addEventListener("load", (event) => {
+    console.log("TEST2")
     const span = (text, index) => {
         const node = document.createElement('span');
         node.textContent = text;
@@ -28,5 +29,6 @@ window.onload = (event) => {
         if (nodes)
             node.firstChild.replaceWith(...nodes)
     });
+
     
-};
+}, true);
