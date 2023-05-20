@@ -100,10 +100,10 @@
 
 
 <script type="module">
-    import { Application } from '/static/runtime.js';
+    import { Application } from '/roid-website/static/runtime.js';
     const canvas = document.getElementById('canvas3d');
     const app = new Application(canvas);
-    app.load('/static/scene.splinecode');
+    app.load('/roid-website/static/scene.splinecode');
 
     window.addEventListener("load", function() {
         document.getElementById('render-container-placeholder').style.display = "none";
